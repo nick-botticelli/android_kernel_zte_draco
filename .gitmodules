@@ -1,0 +1,5 @@
+[submodule "arm-linux-androideabi-4.9"]
+	path = arm-linux-androideabi-4.9
+	url = https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/
+	branch = nougat-release
+	ignore = dirty

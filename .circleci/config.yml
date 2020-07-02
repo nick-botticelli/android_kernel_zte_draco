@@ -1,0 +1,30 @@
+version: 2.1
+
+workflows:
+  compileAndroidKernel:
+    jobs:
+      - buildKernel
+
+jobs:
+  buildKernel:
+    machine:
+      image: ubuntu-1604:202004-01
+    steps:
+      - checkout
+      - run:
+          name: Collect submodules
+          command: git submodule update --init --recursive
+      - run:
+          name: Update APT
+          command: sudo apt update
+      - run:
+          name: Collect dependencies
+          command: DEBIAN_FRONTEND=noninteractive sudo apt-get install -q -y -u -o Dpkg::Options::="--force-confdef" build-essential kernel-package libncurses5-dev bzip2
+      - run:
+          name: Fix permissions
+          command: sudo chmod -R 777 .    
+      - run:
+          name: Run build script
+          command: sudo ./build.sh
+      - store_artifacts:
+          path: output/arch/arm/boot/zImage

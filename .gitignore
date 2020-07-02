@@ -93,3 +93,7 @@ signing_key.x509
 x509.genkey
 #drivers/soc/qcom/vendor
 #include/soc/qcom/vendor
+
+# Custom
+/output/
+!/.circleci/
