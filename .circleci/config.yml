@@ -27,4 +27,4 @@ jobs:
           name: Run build script
           command: sudo ./build.sh
       - store_artifacts:
-          path: output/arch/arm/boot/zImage
+          path: output/arch/arm/boot
